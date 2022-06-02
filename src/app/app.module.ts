@@ -13,6 +13,7 @@ import { CustomMaterialModule } from './shared/custom-material/custom-material.m
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import {characterReducer} from './state/assessment.reducer'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {characterReducer} from './state/assessment.reducer'
     CustomMaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     StoreModule.forRoot({counter : characterReducer})
   ],
   providers: [],
