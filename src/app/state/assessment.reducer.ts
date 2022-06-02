@@ -1,16 +1,9 @@
-import { state } from "@angular/animations";
-import { createReducer, on } from "@ngrx/store";
-import { loadCharacter } from "./assessment.actions";
-import { characterState } from "./assessment.state";
+import { createReducer, on } from '@ngrx/store';
+import {loadCharacter, loadEpisode, loadLocation} from './assessment.actions';
 
-const _characterReducer = createReducer(characterState,on(loadCharacter,(state)=>{
-    return {
-        ...state,
-        counter: state.counter + 1
-    }
-}))
+export const initialState : any = 0
 
-
-export function characterReducer(state : any, action : any){
-        return _characterReducer(state, action)
-    }
+export const characterReducer = createReducer(
+    initialState,
+    on(loadCharacter, (state) => state + 1),
+  );

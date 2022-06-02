@@ -12,8 +12,10 @@ import { ShareModule } from './shared/share.module';
 import { CustomMaterialModule } from './shared/custom-material/custom-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
-import {characterReducer} from './state/assessment.reducer'
+
+
 import { HttpClientModule } from '@angular/common/http';
+import { characterReducer } from './state/assessment.reducer';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forRoot({counter : characterReducer})
+    StoreModule.forRoot({count : characterReducer})
+
   ],
   providers: [],
   bootstrap: [AppComponent]

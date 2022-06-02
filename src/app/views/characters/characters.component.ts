@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { CharacterService } from 'src/app/services/character.service';
 import { loadCharacter } from 'src/app/state/assessment.actions';
 
@@ -9,22 +10,23 @@ import { loadCharacter } from 'src/app/state/assessment.actions';
   styleUrls: ['./characters.component.scss']
 })
 export class CharactersComponent implements OnInit {
-  favoriteSeason?: string;
-  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
-  counter? : number;
-  constructor(private store : Store<{counter : {counter: number}}>, private characterService: CharacterService) { }
+  characters$: Observable<number>
+  constructor(private store : Store<{ count: number }>, private characterService: CharacterService) { 
+    this.characters$ = store.select('count');
+    
+  }
 
   ngOnInit(): void {
    this.characterService.getCharacters().subscribe((res)=>{
      console.log('movement',res.results)
-   })
-    this.store.select('counter').subscribe(data =>{
-      this.counter = data.counter
-    })
+   });
+
+   this.store.select(store => store.count)
+ 
   }
 
   onAdd(){
-    this.store.dispatch(loadCharacter())
+this.store.dispatch(loadCharacter())
   }
 
 }

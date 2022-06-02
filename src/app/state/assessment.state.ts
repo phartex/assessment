@@ -40,7 +40,10 @@ export interface Icharacter {
 }
 
 export const characterState = {
-    counter: '12'
+    counter: {
+      name: 'tobi',
+      gender : 'M'
+    }
 }
 export const locationState = {
     characters: null
