@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CharacterService } from 'src/app/services/character.service';
+import { DataService } from 'src/app/services/data.service';
 import { loadCharacter } from 'src/app/state/assessment.actions';
+import { CounterState } from 'src/app/state/assessment.reducer';
 
 @Component({
   selector: 'app-characters',
@@ -10,23 +12,27 @@ import { loadCharacter } from 'src/app/state/assessment.actions';
   styleUrls: ['./characters.component.scss']
 })
 export class CharactersComponent implements OnInit {
-  characters$: Observable<number>
-  constructor(private store : Store<{ count: number }>, private characterService: CharacterService) { 
-    this.characters$ = store.select('count');
-    
+  // characters$: Observable<number>
+  allCharacters: any;
+  constructor(private store: Store<{ count: CounterState }>,
+     private characterService: CharacterService, private dataService : DataService) {
+
+
   }
 
   ngOnInit(): void {
-   this.characterService.getCharacters().subscribe((res)=>{
-     console.log('movement',res.results)
-   });
+    this.store.dispatch(loadCharacter());
+    this.dataService.characterDetails.subscribe((res)=>{
+      console.log('component',res);
+      this.allCharacters = res;
+      
+    })
 
-   this.store.select(store => store.count)
- 
+
   }
 
-  onAdd(){
-this.store.dispatch(loadCharacter())
+  onAdd() {
+   
   }
 
 }

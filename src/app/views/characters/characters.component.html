@@ -1,2 +1,5 @@
-<p>characters works!{{characters$ | async}}</p>
+<p>characters works! </p>
+<div *ngFor="let character of allCharacters">
+    {{character.name}}
+</div>
 <button (click)="onAdd()">add</button>

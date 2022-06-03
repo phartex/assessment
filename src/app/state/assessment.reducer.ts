@@ -1,9 +1,30 @@
 import { createReducer, on } from '@ngrx/store';
-import {loadCharacter, loadEpisode, loadLocation} from './assessment.actions';
+import { loadCharacter, loadEpisode, loadLocation } from './assessment.actions';
 
-export const initialState : any = 0
+
+export interface CounterState {
+  counter: {
+    name: string,
+    amount: number
+  };
+  
+}
+
+
+export const initialState: CounterState = {
+  counter: {
+    name: 'tobi',
+    amount: 23
+  },
+};
+
 
 export const characterReducer = createReducer(
-    initialState,
-    on(loadCharacter, (state) => state + 1),
-  );
+  initialState,
+  on(loadCharacter, (state) => {
+    return {
+      ...state,
+    };
+  }),
+);
+

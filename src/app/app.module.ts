@@ -16,6 +16,8 @@ import { StoreModule } from '@ngrx/store';
 
 import { HttpClientModule } from '@angular/common/http';
 import { characterReducer } from './state/assessment.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AssessmentEffects } from './state/assessment.effects';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { characterReducer } from './state/assessment.reducer';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    EffectsModule.forRoot([AssessmentEffects]),
     StoreModule.forRoot({count : characterReducer})
 
   ],
