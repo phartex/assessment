@@ -1,7 +1,39 @@
 <div class="container">
-    <div *ngFor="let character of allCharacters" class="inner-container">
-       <p>{{character.name}}</p>
-    </div>
+    
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef> Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Species">
+                <th mat-header-cell *matHeaderCellDef> Species </th>
+                <td mat-cell *matCellDef="let element"> {{element.species}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button (click)="openDialog(element)" class="aut-btn">
+                        View Details
+                    </button>
+                </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
 </div>
-
-
