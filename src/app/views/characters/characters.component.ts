@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -7,7 +9,7 @@ import { CharacterService } from 'src/app/services/character.service';
 import { DataService } from 'src/app/services/data.service';
 import { loadCharacter } from 'src/app/state/assessment.actions';
 import { CounterState } from 'src/app/state/assessment.reducer';
-import { ViewDetailsComponent } from '../view-details/view-details.component';
+import { ViewDetailsComponent } from '../modals/view-details/view-details.component';
 
 @Component({
   selector: 'app-characters',
@@ -16,7 +18,7 @@ import { ViewDetailsComponent } from '../view-details/view-details.component';
 })
 export class CharactersComponent implements OnInit {
   // characters$: Observable<number>
-  allCharacters: any;
+  displayAllCharacters: boolean = false
   selectedRow!: any;
   displayedColumns: string[] = [
     'Name',
@@ -26,6 +28,8 @@ export class CharactersComponent implements OnInit {
 
   dataSource!: MatTableDataSource<any>;
   dataSourceTwo!: MatTableDataSource<any>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private store: Store<{ count: CounterState }>, private dialogRef: MatDialog,
     private characterService: CharacterService, private dataService: DataService) {
@@ -36,7 +40,11 @@ export class CharactersComponent implements OnInit {
     this.store.dispatch(loadCharacter());
     this.dataService.characterDetails.subscribe((res) => {
       console.log('component', res);
-      this.allCharacters = res;
+      if (Object.keys(res).length === 0) {
+        this.displayAllCharacters = true;
+      }else{
+        this.displayAllCharacters = false;
+      }
       this.initDataSource(res);
 
     });
@@ -45,16 +53,18 @@ export class CharactersComponent implements OnInit {
   openDialog(selectedItem: any): void {
     this.selectedRow = selectedItem;
     this.dialogRef.open(ViewDetailsComponent, {
+      width: '600px',
+      height: '50vh',
       data: {
-        Name: this.selectedRow.name,
-        // accountNumber: this.selectedRow.accountNumber,
-        // branchAddress: this.selectedRow.branchAddress,
-        // branchCode: this.selectedRow.branchCode,
-        // branchName: this.selectedRow.branchName,
-        // chequeType: this.selectedRow.chequeType,
-        // dateOfRequest: this.selectedRow.dateOfRequest,
-        // requestBranchName: this.selectedRow.requestBranchName,
-        // deliveryAddress: this.selectedRow.deliveryAddress,
+        name: this.selectedRow.name,
+        status: this.selectedRow.status,
+        species: this.selectedRow,
+        gender: this.selectedRow.gender,
+        origin: this.selectedRow.origin,
+        location: this.selectedRow.location.name,
+        image: this.selectedRow.image,
+        createdOn: this.selectedRow.created,
+       
 
       },
     });
@@ -70,9 +80,17 @@ export class CharactersComponent implements OnInit {
       this.dataSource = new MatTableDataSource<any>(responseData);
 
 
-      // this.dataSourceTwo.paginator = this.paginator;
-      // this.dataSourceTwo.sort = this.sort;
+      this.dataSourceTwo.paginator = this.paginator;
+      this.dataSourceTwo.sort = this.sort;
     }
   };
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
 }

@@ -11,8 +11,9 @@ dipslayDetails: any;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<ViewDetailsComponent>) { }
 
   ngOnInit(): void {
-   this.dipslayDetails = this.data.details;
-   console.log(this.dipslayDetails)
   }
 
+  closeDialog(){
+    this.dialogRef.close();
+  }
 }

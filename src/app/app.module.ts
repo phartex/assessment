@@ -18,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { characterReducer } from './state/assessment.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AssessmentEffects } from './state/character.effects';
-import { ViewDetailsComponent } from './views/view-details/view-details.component';
+import { ViewDetailsComponent } from './views/modals/view-details/view-details.component';
+import { ViewEpisodesComponent } from './views/modals/view-details/view-episodes/view-episodes.component';
+import { ViewLocationsComponent } from './views/modals/view-details/view-locations/view-locations.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ViewDetailsComponent } from './views/view-details/view-details.componen
     CharactersComponent,
     LocationsComponent,
     EpisodesComponent,
-    ViewDetailsComponent
+    ViewDetailsComponent,
+    ViewEpisodesComponent,
+    ViewLocationsComponent
   ],
   imports: [
     BrowserModule,

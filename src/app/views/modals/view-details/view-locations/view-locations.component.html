@@ -1,0 +1,10 @@
+<div>
+    <p><span class="bold-text">Name: </span> {{data.name}}</p>
+    <p><span class="bold-text">Dimension: </span> {{data.dimension}}</p>
+    <p><span class="bold-text">URL:</span> {{data.url}}</p>
+ 
+    <p><span class="bold-text">Date of creation: </span>{{data.created | date}}</p>
+    
+    
+    <button mat-raised-button color="primary" class="close-btn" (click)="closeDialog()">close</button>
+</div>

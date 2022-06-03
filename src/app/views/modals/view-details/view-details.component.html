@@ -1,0 +1,10 @@
+<div>
+    <p><span class="bold-text">Name: </span> {{data.name}}</p>
+    <p><span class="bold-text">Status: </span> {{data.status}}</p>
+    <p><span class="bold-text">Gender:</span> {{data.gender}}</p><p><span class="bold-text">Origin: </span>{{data.origin.name}}</p>
+    <p><span class="bold-text">Location name: </span>{{data.location}}</p>
+    <p><span class="bold-text">Date of creation: </span>{{data.createdOn | date}}</p>
+    
+    
+    <button mat-raised-button color="primary" class="close-btn" (click)="closeDialog()">close</button>
+</div>

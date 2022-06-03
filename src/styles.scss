@@ -9,12 +9,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .main-container{
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    margin: 2em auto 0 auto;
+    width: 50%;
+    margin: 2em auto;
 }
 .btn{
     margin-left: 10px !important;
-    width: 90px;
+    width: 100px;
     height: 40px;
 }
 
@@ -39,3 +39,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 table {
     width: 100%;
   }
+.close-btn{
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.bold-text{
+    font-weight: 500;
+    font-size: 1.3em;
+}
+.loading-container{
+    height: 30vh;
+    background-color: antiquewhite;
+}
+.loading-container p{
+    padding-top: 3em;
+  text-align: center;
+    font-size: 2em;
+}
