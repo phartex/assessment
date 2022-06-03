@@ -46,15 +46,15 @@ export class CharactersComponent implements OnInit {
     this.selectedRow = selectedItem;
     this.dialogRef.open(ViewDetailsComponent, {
       data: {
-        accountName: this.selectedRow.accountName,
-        accountNumber: this.selectedRow.accountNumber,
-        branchAddress: this.selectedRow.branchAddress,
-        branchCode: this.selectedRow.branchCode,
-        branchName: this.selectedRow.branchName,
-        chequeType: this.selectedRow.chequeType,
-        dateOfRequest: this.selectedRow.dateOfRequest,
-        requestBranchName: this.selectedRow.requestBranchName,
-        deliveryAddress: this.selectedRow.deliveryAddress,
+        Name: this.selectedRow.name,
+        // accountNumber: this.selectedRow.accountNumber,
+        // branchAddress: this.selectedRow.branchAddress,
+        // branchCode: this.selectedRow.branchCode,
+        // branchName: this.selectedRow.branchName,
+        // chequeType: this.selectedRow.chequeType,
+        // dateOfRequest: this.selectedRow.dateOfRequest,
+        // requestBranchName: this.selectedRow.requestBranchName,
+        // deliveryAddress: this.selectedRow.deliveryAddress,
 
       },
     });
