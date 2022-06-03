@@ -26,5 +26,10 @@ export const characterReducer = createReducer(
       ...state,
     };
   }),
+  on(loadLocation,(state) => {
+    return {
+      ...state,
+    };
+  })
 );
 

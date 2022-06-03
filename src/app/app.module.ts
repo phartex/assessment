@@ -17,7 +17,8 @@ import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { characterReducer } from './state/assessment.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { AssessmentEffects } from './state/assessment.effects';
+import { AssessmentEffects } from './state/character.effects';
+import { ViewDetailsComponent } from './views/view-details/view-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AssessmentEffects } from './state/assessment.effects';
     HomeComponent,
     CharactersComponent,
     LocationsComponent,
-    EpisodesComponent
+    EpisodesComponent,
+    ViewDetailsComponent
   ],
   imports: [
     BrowserModule,

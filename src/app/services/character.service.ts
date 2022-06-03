@@ -20,6 +20,20 @@ export class CharacterService {
     let path = 'https://rickandmortyapi.com/api/character'
 
     return this.http.get<Iassessment>(path, httpOptions)
+  };
+
+  getLocations():Observable<Iassessment>{
+
+    let path = 'https://rickandmortyapi.com/api/location'
+
+    return this.http.get<any>(path, httpOptions)
+  };
+
+  getepisodes():Observable<Iassessment>{
+
+    let path = 'https://rickandmortyapi.com/api/episode'
+
+    return this.http.get<Iassessment>(path, httpOptions)
   }
   
 }

@@ -1,5 +1,7 @@
-<p>characters works! </p>
-<div *ngFor="let character of allCharacters">
-    {{character.name}}
+<div class="container">
+    <div *ngFor="let character of allCharacters" class="inner-container">
+       <p>{{character.name}}</p>
+    </div>
 </div>
-<button (click)="onAdd()">add</button>
+
+

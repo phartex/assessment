@@ -26,8 +26,9 @@ export class CharactersComponent implements OnInit {
       console.log('component',res);
       this.allCharacters = res;
       
-    })
+    });
 
+    
 
   }
 
